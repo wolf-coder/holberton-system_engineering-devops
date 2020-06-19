@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#Bash script that displays Holberton School 10 times.
+#Bash script that displays Holberton School 10 times
 i=0
 while [ "$i" -lt 9 ]
 do
@@ -8,6 +8,5 @@ do
     then
 	echo "Hi"
     fi
-
     ((i++))
 done
