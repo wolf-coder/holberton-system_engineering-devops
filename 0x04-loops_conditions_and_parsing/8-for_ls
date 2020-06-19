@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#bash script to display information.
+
+for i in *
+do
+    cut -d "-" -f 2 "$i"
+done
