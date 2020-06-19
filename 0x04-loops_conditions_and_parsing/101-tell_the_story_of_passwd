@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#Tell the story of passwd
+
+f="/etc/passwd"
+IFS=':'
+while read -r USERNAME PASSWORD U_ID G_ID UI HOME CMD
+do
+    echo "The user $USERNAME is part of the $G_ID gang, lives in $HOME and rides $CMD. $U_ID's place is protected by the passcode $PASSWORD, more info about the user here: $UI"
+done < "$f"
