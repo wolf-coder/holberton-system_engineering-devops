@@ -1,5 +1,5 @@
 #exec a command : killing a process
-exec {'killing a process':
-  command => 'kill $(pgrep -f killmenow)',
+exec {'kill':
+  command  => 'pkill killmenow',
   path     => '/usr/bin/',
 }
