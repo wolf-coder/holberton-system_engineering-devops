@@ -4,6 +4,6 @@ exec { 'Turn off passwd auth':
   provider => 'shell',
 }
 exec { 'Declare identity file':
-  command  =>'echo -e "\tIdentityFile ~/.ssh/holberton" >> /tmp/ssh_config',
+  command  =>'echo -e "\tIdentityFile ~/.ssh/holberton" >> /etc/ssh/ssh_config',
   provider => 'shell',
 }
