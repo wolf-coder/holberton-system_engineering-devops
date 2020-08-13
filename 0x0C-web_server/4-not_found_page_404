@@ -15,5 +15,5 @@ f=$(printf %s "location /redirect_me {return 301 https://www.youtube.com/watch?v
 sed -i  "48i $f" /etc/nginx/sites-available/default
 echo "Ceci n'est pas une page" >/var/www/html/404.html
 new_string='\/404.html'
-sed  "s/=404/$new_string/" /etc/nginx/sites-available/default
+sed -i "s/=404/$new_string/" /etc/nginx/sites-available/default
 service nginx restart
