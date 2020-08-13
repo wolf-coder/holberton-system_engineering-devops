@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+#Install/Configure nginx With a "404 Moved Permanently" Redirection
+
+#Install/configure Nginx(same as task 1)
+apt-get update
+apt-get -y install nginx
+ufw allow 'Nginx HTTP'
+chown -R "$USER":"$USER" /var/www/html/index.nginx-debian.html
+chmod -R 755 /var/www
+echo "Holberton School" > /var/www/html/index.nginx-debian.html
+
+
+#Redirection
+f=$(printf %s "location /redirect_me {return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;}")
+sed -i  "48i $f" /etc/nginx/sites-available/default
+echo "Ceci n'est pas une page" >/var/www/html/404.html
+new_string='\/404.html'
+sed  "s/=404/$new_string/" /etc/nginx/sites-available/default
+service nginx restart
