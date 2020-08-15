@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 #Debugging #0
 
-docker exec -i "$(docker  ps -q --filter ancestor=holbertonschool/265-0)"  "service apache2 start"
+docker exec -i "$(docker  ps -q --filter ancestor=holbertonschool/265-0)"  service apache2 start
