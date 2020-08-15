@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
-#Debugging #0
+# The command suppose that we are  on the container shell..
 
-docker exec -i "$(docker  ps -q --filter ancestor=holbertonschool/265-0)"  service apache2 start
+service apache2 start
+
+#the following commented line is correct( executed from host)
+#docker exec -i "$(docker  ps -q --filter ancestor=holbertonschool/265-0)"  service apache2 start
+
