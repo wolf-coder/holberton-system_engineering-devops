@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 #0. Nginx likes port 80
 
-
-ufw allow 'Nginx HTTP'
-service ufw start
 sed -i "s/8080/80/" /etc/nginx/sites-enabled/default
 service nginx restart
