@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+#Nginx configure header response
+
+sudo apt-get update
+sudo apt-get upgrate
+sudo apt-get -y install nginx
+sudo ufw allow 'Nginx HTTP'
+
+sed "/location/ a add_header X-Served-By  $HOSTNAME" default
+service nginx restart
