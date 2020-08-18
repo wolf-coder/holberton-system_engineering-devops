@@ -10,8 +10,8 @@ printf %s "
 frontend haproxy
     bind *:80
     mode http
-    default_backend  fd
-backend fd
+    default_backend  cuore
+backend cuore
     balance roundrobin
         server 1407-web-01 35.237.246.159:80 check
         server 1407-web-02 35.196.39.61:80 check
