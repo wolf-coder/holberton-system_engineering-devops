@@ -1,7 +1,7 @@
 exec{ 'Updating Repostories':
   provider => shell,
   command => 'sudo apt-get update',
-  before => Exec['Installing -y nginx'],
+  before => Exec['Installing nginx'],
 }
 exec{ 'Installing nginx':
   provider => shell,
@@ -10,7 +10,8 @@ exec{ 'Installing nginx':
 }
 exec { 'add_header':
   provider    => shell,
-  command     => 'sudo sed -i "44i  add_header X-Served-By  ""\$HOSTNAME"";" /etc/nginx/sites-available/default',
+  environment => ["HOSTNAME=${hostname}"],
+  command     => 'sudo sed -i "44i  add_header X-Served-By  \"$HOSTNAME\";" /etc/nginx/sites-available/default',
   before      => Exec['Nginx Restaring'],
 }
 exec { 'Nginx Restaring':
