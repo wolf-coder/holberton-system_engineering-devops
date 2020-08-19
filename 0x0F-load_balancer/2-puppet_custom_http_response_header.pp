@@ -1,5 +1,6 @@
 exec{ 'apt-get update':
   command => '/usr/bin/apt-get update',
+  before => Exec['add_header']
 }
 package{ 'nginx':
   ensure => 'installed',
@@ -7,7 +8,7 @@ package{ 'nginx':
 }
 exec { 'add_header':
   provider    => shell,
-  command     => 'sed -i "44i  add_header X-Served-By  ""$HOSTNAME"";" /etc/nginx/sites-available/default',
+  command     => 'sed -i "44i  add_header X-Served-By  ""\$HOSTNAME"";" /etc/nginx/sites-available/default',
   before      => Exec['Nginx Restaring'],
 }
 exec { 'Nginx Restaring':
