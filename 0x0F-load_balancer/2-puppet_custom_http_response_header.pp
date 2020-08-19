@@ -1,10 +1,10 @@
 exec{ 'apt-get update':
   command => '/usr/bin/apt-get update',
-  before => Exec['add_header']
 }
 package{ 'nginx':
   ensure => 'installed',
   require => Exec['apt-get update'],
+  before => Exec['add_header'],
 }
 exec { 'add_header':
   provider    => shell,
