@@ -1,6 +1,6 @@
 exec{ 'Updating Repostories':
   provider => shell,
-  command => 'sudo apt-get update',
+  command => 'sudo apt-get -y update',
   before => Exec['Installing nginx'],
 }
 exec{ 'Installing nginx':
