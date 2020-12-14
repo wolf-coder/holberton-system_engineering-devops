@@ -1,3 +1,4 @@
+	$ssh -vvv  -i ~/.ssh/holberton ubuntu@35.190.152.224
 OpenSSH_8.1p1, OpenSSL 1.1.1g FIPS  21 Apr 2020
 debug1: Reading configuration data /etc/ssh/ssh_config
 debug3: /etc/ssh/ssh_config line 51: Including file /etc/ssh/ssh_config.d/05-redhat.conf depth 0
