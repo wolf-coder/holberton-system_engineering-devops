@@ -16,4 +16,5 @@ backend cuore
         server 1407-web-01 35.237.246.159:80 check
         server 1407-web-02 35.196.39.61:80 check
 "        >> /etc/haproxy/haproxy.cfg
+
 sudo service haproxy restart
