@@ -4,7 +4,5 @@
 apt-get update
 apt-get -y install nginx
 ufw allow 'Nginx HTTP'
-chown -R "$USER":"$USER" /var/www/html/index.nginx-debian.html
-chmod -R 755 /var/www
 echo "Holberton School" > /var/www/html/index.nginx-debian.html
 service nginx restart
