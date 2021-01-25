@@ -7,25 +7,23 @@ ufw allow 'Nginx HTTP'
 chown -R "$USER":"$USER" /var/www/html/index.nginx-debian.html
 chmod -R 755 /var/www
 echo "Holberton School" > /var/www/html/index.nginx-debian.html
-printf %s "
-server {		
+printf %s "server {		
 	      listen 80 default_server;
 	      listen [::]:80 default_server;
 	      
-	      root /var/www/example.com/html ;
+	      root /var/www/html ;
 	      
 	      index index.html index.htm index.nginx-debian.html;
 
-	      server_name  example.com www.example.com;
+	      server_name  _;
  
 	
 	      location / {
 	              try_files \$uri \$uri/ =404;
 	              error_page 404 /custom_404.html;
 	      }
-}
+}" > /etc/nginx/sites-available/default
 
-" > /etc/nginx/sites-available/default
 #Redirect 404
 echo "Ceci n'est pas une page" >/var/www/html/custom_404.html
 service nginx restart
