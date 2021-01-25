@@ -7,8 +7,7 @@ ufw allow 'Nginx HTTP'
 chown -R "$USER":"$USER" /var/www/html/index.nginx-debian.html
 chmod -R 755 /var/www
 echo "Holberton School" > /var/www/html/index.nginx-debian.html
-printf %s "
-server {
+printf %s "server {
        listen 80 default_server;
        listen [::]:80 default_server;
        root /var/www/html ;
@@ -20,7 +19,5 @@ server {
 	location /redirect_me{
 		 error_page 404 =301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
 	}
-}
-" > /etc/nginx/sites-available/default
-
+}" > /etc/nginx/sites-available/default
 service nginx restart
