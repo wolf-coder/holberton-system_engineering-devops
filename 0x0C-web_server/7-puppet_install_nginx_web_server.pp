@@ -27,7 +27,7 @@ file { 'default':
        index index.html index.htm index.nginx-debian.html;
        server_name _;
        location / {
-       		try_files \$uri \$uri/ =301;
+       		try_files $uri $uri/ =301;
 	}
 }',
   require => File['index.nginx-debian.html'],
@@ -36,4 +36,5 @@ file { 'default':
 exec { 'Nginx Restaring':
   provider => shell,
   command  => 'sudo service nginx restart',
+  require  => File['default'],
 }
