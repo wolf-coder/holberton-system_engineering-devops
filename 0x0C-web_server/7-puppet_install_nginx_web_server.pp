@@ -7,14 +7,13 @@ exec{ 'Updating Repostories':
 package{ 'nginx':
   ensure  => 'installed',
   require => Exec['Updating Repostories'],
-  before  => Exec['Nginx Restaring'],
 }
 # creating a file in /tmp
 file { 'index.nginx-debian.html':
   path    => '/var/www/html/index.nginx-debian.html',
   owner   => root,
   content => 'Holberton School',
-  before  => Package['nginx'],
+  require => Package['nginx'],
 }
 # creating defaul block with requirements
 file { 'default':
