@@ -7,5 +7,18 @@ ufw allow 'Nginx HTTP'
 chown -R "$USER":"$USER" /etc/nginx/*
 chmod -R 755 /etc/nginx/sites-available/default
 chmod -R 755 /var/www
-sed -i "44i  add_header X-Served-By  ""$HOSTNAME"";" /etc/nginx/sites-available/default
+printf %s "server {
+       listen 80 default_server;
+       listen [::]:80 default_server;
+       
+       root /var/www/html ;
+       index index.html index.htm index.nginx-debian.html;
+       
+       server_name _;
+       
+       location / {
+       		add_header X-Served-By  $HOSTNAME;
+       		try_files \$uri \$uri/ =404;
+	}
+}"> /etc/nginx/sites-available/default
 service nginx restart
