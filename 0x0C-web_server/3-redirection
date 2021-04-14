@@ -4,9 +4,8 @@
 apt-get update
 apt-get -y install nginx
 ufw allow 'Nginx HTTP'
-chown -R "$USER":"$USER" /var/www/html/index.nginx-debian.html
-chmod -R 755 /var/www
-echo "Holberton School" > /var/www/html/index.nginx-debian.html
+echo "Holberton School for the win!" > /var/www/html/index.nginx-debian.html
+
 printf %s "server {
        listen 80 default_server;
        listen [::]:80 default_server;
