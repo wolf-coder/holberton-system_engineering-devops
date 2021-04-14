@@ -23,7 +23,5 @@ printf %s "server {
 	              error_page 404 /custom_404.html;
 	      }
 }" > /etc/nginx/sites-available/default
-
-#Redirect 404
 echo "Ceci n'est pas une page" >/var/www/html/custom_404.html
 service nginx restart
