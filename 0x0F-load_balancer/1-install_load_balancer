@@ -4,8 +4,6 @@
 sudo apt update
 sudo apt-get  -y install haproxy
 
-sudo chown -R "$USER":"$USER"  /etc/haproxy/*
-sudo chmod -R 755 /etc/haproxy/*
 printf %s "
 frontend haproxy
     bind *:80
@@ -13,8 +11,8 @@ frontend haproxy
     default_backend  cuore
 backend cuore
     balance roundrobin
-        server 1407-web-01 35.237.246.159:80 check
-        server 1407-web-02 35.196.39.61:80 check
+        server 1407-web-01 34.73.158.219:80 check
+        server 1407-web-02 34.75.32.130:80 check
 "        >> /etc/haproxy/haproxy.cfg
 
 sudo service haproxy restart
