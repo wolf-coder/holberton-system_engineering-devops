@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# display information for the specified subdomain
+
+DIG()
+{
+    line=$(dig "$1"."$2" | grep -A1 'ANSWER SECTION:' | tail -1)
+    echo "$line" | awk -v subdomain="$1" '{printf "The subdomain %s is a A record and points to %s\n",subdomain,$5}'
+}
+
+if [ $# -eq 1 ]
+then
+    DIG www "$1"
+    DIG lb-01 "$1"
+    DIG web-01 "$1"
+    DIG web-02 "$1"
+else
+    DIG "$2" "$1"
+fi
+    
+
