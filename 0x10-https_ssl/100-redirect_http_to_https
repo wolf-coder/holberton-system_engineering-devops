@@ -40,7 +40,8 @@ frontend www-https
 frontend haproxy
 	 bind *:80
 	 mode http
-	 default_backend  cuore
+	 http-request redirect scheme https code 301 unless { ssl_fc }
+	 default_backend  cuore 
 backend cuore		
 	 balance roundrobin
 	 server 1407-web-01 34.73.158.219:80 check
