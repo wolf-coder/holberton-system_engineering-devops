@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Backing up a databases
+if [[ $# -eq 1 ]]; then
+mysqldump -h localhost -u root -p"$1"  --all-databases  > backup.sql
+echo "backup.sql"
+gzip -c backup.sql > $(date '+%d-%m-%Y').tar.gz
+fi
