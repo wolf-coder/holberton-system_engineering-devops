@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Requirements:
+# script that that take a username as argument and diplay its name throught whoami command.
+sudo -u "$1" whoami
