@@ -26,9 +26,8 @@ def To_Json(ID):
     ID = sys.argv[1]
     Users = requests.get("https://jsonplaceholder.typicode.com/users/{}"
                          .format(ID)).json()
-    TODO = requests.get("""
-    https://jsonplaceholder.typicode.com/todos?userId={}
-    """.format(ID)).json()
+    TODO = requests.get("https://jsonplaceholder.typicode.com/todos?userId={}".
+                        format(ID)).json()
 
     with open("{}.json".format(ID), "w") as U_ID:
         json.dump({ID: [{
