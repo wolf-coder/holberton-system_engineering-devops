@@ -15,8 +15,8 @@ def count_words(subreddit, word_list, after='', occurs={}):
     keywords (case-insensitive, delimited by spaces.
     Javascript should count as javascript, but java should not).
     """
-    url = 'https://api.reddit.com/r/{}?limit=100&after={}'.
-    format(subreddit, after)
+    url = "https://api.reddit.com/r/{}?limit=100&after={}".\
+        format(subreddit, after)
     response = requests.get(url, headers=headers)
     try:
         data = response.json()
