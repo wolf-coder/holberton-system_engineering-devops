@@ -8,9 +8,7 @@ import requests
 
 
 def count_words(subreddit, word_list, hot_list=[], after=None):
-    """
-    Function count_words : Get ALL hot posts
-    """
+    '''function count_words : Get ALL hot posts'''
     headers = {'User-agent': 'Unix:0-subs:v1'}
     params = {'limit': 100}
     if isinstance(after, str):
@@ -35,19 +33,19 @@ def count_words(subreddit, word_list, hot_list=[], after=None):
 
 
 def Display_Results(word_list, hot_list):
-    """
+    '''
     function Display_Results :Prints request results
-    """
-    Counts = {}
-    for elem in elem_list:
-        count[elem] = 0
+    '''
+    count = {}
+    for word in word_list:
+        count[word] = 0
     for title in hot_list:
-        for elem in elem_list:
-            count[elem] = count[elem] +\
-             len(re.findall(r'(?:^| ){}(?:$| )'.format(elem), title, re.I))
+        for word in word_list:
+            count[word] = count[word] +\
+             len(re.findall(r'(?:^| ){}(?:$| )'.format(word), title, re.I))
 
-    Counts = {k: v for k, v in count.items() if v > 0}
-    Words = sorted(list(count.keys()))
-    for elem in sorted(words,
+    count = {k: v for k, v in count.items() if v > 0}
+    words = sorted(list(count.keys()))
+    for word in sorted(words,
                        reverse=True, key=lambda k: count[k]):
-        print("{}: {}".format(elem, count[elem]))
+        print("{}: {}".format(word, count[word]))
